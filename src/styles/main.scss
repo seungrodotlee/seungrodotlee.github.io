@@ -1,0 +1,58 @@
+.flex-col {
+  @apply flex;
+}
+
+html {
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+}
+
+.button {
+  @apply px-3 py-2 rounded-full border transition duration-700 border-gray-300 transition duration-1000;
+
+  &.selected,
+  &:hover {
+    @apply border-black;
+  }
+
+  &.gradiented {
+    @apply relative overflow-hidden;
+
+    &.selected,
+    &:hover {
+      @apply text-white;
+    }
+
+    &::before {
+      content: "";
+      @apply absolute top-0 right-full w-[300%] h-full bg-gradient-to-r from-white to-white -z-10 opacity-0 transition duration-700;
+      transform: translateX(0);
+    }
+
+    &.selected::before,
+    &:hover::before {
+      @apply opacity-100;
+      transform: translateX(99%);
+    }
+
+    &.negative {
+      &.selected::before,
+      &::before {
+        @apply from-[#B50404] via-white to-white;
+      }
+    }
+
+    &.concern {
+      &.selected::before,
+      &::before {
+        @apply from-[#f1b100] via-white to-white;
+      }
+    }
+
+    &.positive {
+      &.selected::before,
+      &::before {
+        @apply from-[#380EC4] via-white to-white;
+      }
+    }
+  }
+}
